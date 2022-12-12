@@ -35,7 +35,7 @@ $("#btn").click(function () {
         .then(resp => resp.json())
         .then(function(data) {
             for (var i=0; i<data.length; i++) {
-                var row = $('<div class="row row-cols-2"><div class="col"><strong>' + data[i].title+ '</strong></div><div class="col">' + data[i].rating + '</div><div class="col">' + data[i].genre + '</div></div><br>');
+                var row = $('<div class="row row-cols-2"><div class="col"><strong>' + data[i].title+ '</strong></div><div class="col">' + data[i].rating + '</div><div class="col">' + data[i].genre + '</div></div><button type="button" id="delete" class="btn-close" aria-label="Close"></button><br>');
                 $('#movies').append(row);
             };
 
