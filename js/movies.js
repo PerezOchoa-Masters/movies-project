@@ -5,9 +5,10 @@ fetch("https://bright-military-blizzard.glitch.me/movies")
     .then(resp => resp.json())
     .then(data => console.log(data));
 
-// ADD USER MOVIE
-$("#btn").click(function (e) {
-    e.preventDefault();
+//Loading Screen
+
+// ADD USER MOVIE (COMPLETED)
+$("#btn").click(function () {
     const newMovie = {
         title: $("#title").val(),
         rating: $("#rating").val(),
@@ -19,8 +20,26 @@ $("#btn").click(function (e) {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(newMovie),
-    }).then(() => fetch("https://bright-military-blizzard.glitch.me/movies")).then(resp => resp.json()).then(movies => console.log(movies));
+    }).then(() => fetch("https://bright-military-blizzard.glitch.me/movies"))
+        .then(resp => resp.json())
+        .then(movies => console.log(movies));
+
 });
+
+
+
+//Adding movies list to HTML
+
+
+    fetch("https://bright-military-blizzard.glitch.me/movies")
+        .then(resp => resp.json())
+        .then(function(data) {
+            for (var i=0; i<data.length; i++) {
+                var row = $('<div class="row row-cols-2"><div class="col"><strong>' + data[i].title+ '</strong></div><div class="col">' + data[i].rating + '</div><div class="col">' + data[i].genre + '</div></div><br>');
+                $('#movies').append(row);
+            };
+
+
 
     // let movieList = [];
     // movies.forEach(({ title, rating, genre }) => {
@@ -32,10 +51,6 @@ $("#btn").click(function (e) {
     // }
     // list += '</ul>';
 
-$("#movies").html(function (){
-    fetch("https://bright-military-blizzard.glitch.me/movies")
-        .then(resp => resp.json())
-        .then(data => console.log(data));
 
     //document.getElementById("movies").innerHTML = list;
 
