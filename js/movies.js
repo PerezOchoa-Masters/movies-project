@@ -39,7 +39,8 @@ $(function() { //IIFE open
             .then(function(data) {
                 $("#movies").html(''); //clear current html
                 for (let i=0; i<data.length; i++) {
-                    let row = '<div class="row row-cols-2">' +
+                    let row = '<div class="row row-cols-5">' +
+                                    '<div class="col">' + data[i].id + ')</div>' +
                                     '<div class="col">' + '<strong>' + data[i].title+ '</strong>' + '</div>' +
                                     '<div class="col">Rating: ' + data[i].rating + '/5</div>' +
                                     '<div class="col">' + data[i].genre + '</div>' +
@@ -52,22 +53,6 @@ $(function() { //IIFE open
                    console.log(id)
                     deleteMovie(id)
                 });
-
-
-
-                // $("#movies").html(''); //clear current html
-                // for (let i=0; i<data.length; i++) {
-                //     let card =  '<div className="card">' +
-                //                     '<img src="..." className="card-img-top" alt="...">' +
-                //                     '<div className="card-body">' +
-                //                         '<h5 className="card-title"><strong>' + data[i].title + '</strong></h5>' +
-                //                         '<p className="card-text">' + data[i].genre + '</p>' +
-                //                         '<p className="card-text"><small className="text-muted"> Rating: ' + data[i].rating + '/5</small></p>' +
-                //                     '</div>'+
-                //                 '</div>'
-                //                 $('.card-group').append(card);
-                //} //for loop close
-
 
             }); //close .then
 
@@ -90,22 +75,26 @@ $(function() { //IIFE open
 
     // // EDIT MOVIE
     $("#btnEdit").click(function () {
+        const editid = $("#idedit").val()
+
+        console.log(editid)
         const editMovie = {
             title: $("#titleEdit").val(),
             rating: $("#ratingEdit").val(),
             genre: $("#genreEdit").val()
         };
-        fetch("https://bright-military-blizzard.glitch.me/movies", {
-            method: 'PATCH',
+
+        fetch(`https://bright-military-blizzard.glitch.me/movies/${editid}`, {
+            method: "PATCH",
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify(editMovie),
-        }).then(() => fetch("https://bright-military-blizzard.glitch.me/movies"))
-            .then(resp => resp.json())
-            .then(movies => console.log(movies));
+            body: JSON.stringify(editMovie)
+        }).then(() => fetch("https://bright-military-blizzard.glitch.me/movies")).then(resp => resp.json()).then(movies => console.log(movies));
+
         renderMovies();
     });
+
 
 
 }); //IIFE close
