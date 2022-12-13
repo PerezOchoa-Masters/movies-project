@@ -12,20 +12,36 @@
     <h1>Movies Project</h1>
 
     <div class="row g-3">
-        <div class="col-sm-7">
+        <div class="col-sm-6">
             <input type="text" class="form-control" id="title" placeholder="Movie Title" aria-label="Movie Title">
         </div>
-        <div class="col-sm">
+        <div class="col-sm-2">
             <input type="text" class="form-control" id="rating" placeholder="Rating" aria-label="Rating">
         </div>
-        <div class="col-sm">
+        <div class="col-sm-2">
             <input type="text" class="form-control" id="genre" placeholder="Genre" aria-label="Genre">
         </div>
         <div class="col-auto">
-            <button type="submit" class="btn btn-primary" id="btn">Submit</button>
+            <button type="submit" class="btn btn-primary" id="btn">Add Movie</button>
         </div>
     </div>
-    <div id="movies">
+
+    <div class="loader"></div>
+    <div id="movies"></div>
+<!--    <div class="card-group"></div>-->
+    <div class="row g-3">
+        <div class="col-sm-6">
+            <input type="text" class="form-control" id="titleEdit" placeholder="Movie Title" aria-label="Movie Title">
+        </div>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" id="ratingEdit" placeholder="Rating" aria-label="Rating">
+        </div>
+        <div class="col-sm-2">
+            <input type="text" class="form-control" id="genreEdit" placeholder="Genre" aria-label="Genre">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary" id="btnEdit">Edit Movie</button>
+        </div>
     </div>
 
 <!--  jQuery Link  -->
