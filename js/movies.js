@@ -1,13 +1,12 @@
 "use strict";
 
-$(function() { //IIFE open
+$(function() {
 
     fetch("https://bright-military-blizzard.glitch.me/movies")
         .then(resp => resp.json())
         .then(data => console.log(data));
 
-
-    //Update movies list HTML
+    //Update Movies and HTML
     function renderMovies(){
         // setTimeout(() => {    //simulate slow page load
             fetch("https://bright-military-blizzard.glitch.me/movies")
@@ -16,26 +15,31 @@ $(function() { //IIFE open
                     $(".loader").hide();
                     $("#movies").html(''); //clear current html
                     for(let i = 0; i < data.length; i++){
-                        let row = '<div class="row row-cols-5">' +
-                            '<div class="col">' + data[i].id + ')</div>' +
-                            '<div class="col">' + '<strong>' + data[i].title + '</strong>' + '</div>' +
-                            '<div class="col">Rating: ' + data[i].rating + '/5</div>' +
-                            '<div class="col">' + data[i].genre + '</div>' +
-                            '<button type="button" data-id="' + data[i].id + '" class="delete btn-close" aria-label="Close"></button>' +
-                            '</div><br>';
+                        let row = '<div class="col">' +
+                                        '<div class="card bg-transparent text-black" style="width: 18rem;">' +
+                                            '<img src="img/ticket-303706__340.webp" class="card-img" alt="ticket">' +
+                                            '<div class="card-img-overlay" style="padding-top: 20px; padding-left: 35px; padding-right: 24px;">' +
+                                                '<h5 class="card-title" style="margin: auto">' + data[i].id + ') ' + data[i].title + '</h5>' +
+                                                '<p class="card-text" style="margin: auto"><strong>Rating: </strong>' + data[i].rating + '/5</p>' +
+                                                '<p class="card-text" style="margin: auto"><strong>Genre: </strong>' + data[i].genre + '</p>' +
+                                                '<div class="d-grid d-md-flex justify-content-md-end">' +
+                                                    '<button type="button" data-id="' + data[i].id + '" class="delete btn-close" aria-label="Close"></button>' +
+                                                '</div>' +
+                                            '</div>' +
+                                        '</div>' +
+                                    '</div>';
                         $('#movies').append(row);
-                    } //for loop close
+                    }
                     $(".delete").click(function () {
                         let id = $(this).data("id")
                         console.log(id)
                         deleteMovie(id)
                     });
-                }); //close .then
+                });
         // },3000);    //close of load simulation
-    }; //close renderMovies
+    };
 
-
-    // ADD USER MOVIE (COMPLETED)
+    // Add Movies
     $("#btn").click(function () {
         const newMovie = {
             title: $("#title").val(),
@@ -53,10 +57,9 @@ $(function() { //IIFE open
             .then(movies => {
                 console.log(movies)
                 renderMovies()});
-
     });
 
-    // DELETE MOVIE (needs reload)
+    //Delete Movies
     function deleteMovie(id){
         let fetchOptions = {
             method: 'DELETE',
@@ -71,8 +74,7 @@ $(function() { //IIFE open
             })
     };
 
-
-    // // EDIT MOVIE
+    //Edit Movies
     $("#btnEdit").click(function () {
         const editid = $("#idedit").val()
 
@@ -99,4 +101,4 @@ $(function() { //IIFE open
 
     renderMovies();
 
-}); //IIFE close
+});
