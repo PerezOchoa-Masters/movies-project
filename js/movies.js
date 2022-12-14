@@ -18,13 +18,14 @@ $(function() {
                         let row = '<div class="col">' +
                                         '<div class="card bg-transparent text-black" style="width: 18rem;">' +
                                             '<img src="img/ticket-303706__340.webp" class="card-img" alt="ticket">' +
-                                            '<div class="card-img-overlay" style="padding-top: 20px; padding-left: 35px; padding-right: 24px;">' +
-                                                '<h5 class="card-title" style="margin: auto">' + data[i].id + ') ' + data[i].title + '</h5>' +
-                                                '<p class="card-text" style="margin: auto"><strong>Rating: </strong>' + data[i].rating + '/5</p>' +
-                                                '<p class="card-text" style="margin: auto"><strong>Genre: </strong>' + data[i].genre + '</p>' +
+                                            '<div class="card-img-overlay" style="padding-top: 0px; padding-left: 35px; padding-right: 24px;">' +
                                                 '<div class="d-grid d-md-flex justify-content-md-end">' +
                                                     '<button type="button" data-id="' + data[i].id + '" class="delete btn-close" aria-label="Close"></button>' +
                                                 '</div>' +
+                                                '<h5 class="card-title" style="margin: auto">' + data[i].id + ') ' + data[i].title + '</h5>' +
+                                                '<p class="card-text" style="margin: auto"><strong>Rating: </strong>' + data[i].rating + '/5</p>' +
+                                                '<p class="card-text" style="margin: auto"><strong>Genre: </strong>' + data[i].genre + '</p>' +
+
                                             '</div>' +
                                         '</div>' +
                                     '</div>';
